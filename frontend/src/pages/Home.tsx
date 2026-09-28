@@ -27,7 +27,7 @@ export default function Home() {
         </h1>
         <p className={styles.heroSub}>
           Your physical warranty card or receipt may be lost or misplaced.
-          Your digital warranty record remains securely accessible on-chain whenever you need it.
+          Register your warranty digitally and recover your permanent record on-chain anytime.
         </p>
         <div className={styles.heroCtas}>
           {isConnected ? (
@@ -39,8 +39,11 @@ export default function Home() {
               🛡️ Recover My Warranty
             </button>
           )}
+          <Link to="/register" className="btn btn--secondary btn--lg">
+            📝 Register a Warranty
+          </Link>
           <Link to="/verify" className="btn btn--secondary btn--lg">
-            🔍 Verify a Warranty
+            🔍 Verify
           </Link>
         </div>
       </section>
@@ -58,7 +61,7 @@ export default function Home() {
           <div className={styles.psIcon}>⛓️</div>
           <h3>The WarrantyX Solution</h3>
           <p>
-            Digital warranties are linked directly to your wallet address on Bohr Testnet. Simply connect your wallet to recover your digital warranty record anytime.
+            Users register their warranty details and proof of purchase on Bohr Testnet. Once verified by the issuer, digital warranties are stored on-chain for lifetime recovery.
           </p>
         </div>
         <div className={`card ${styles.psCard}`}>
@@ -74,8 +77,13 @@ export default function Home() {
       <section className={styles.stats}>
         <StatCard
           icon="🛡️"
-          label="Recoverable Warranties"
+          label="Active Warranties"
           value={isLoading ? '—' : (stats?.warranties ?? 0n).toString()}
+        />
+        <StatCard
+          icon="📝"
+          label="User Registrations"
+          value={isLoading ? '—' : (stats?.registrations ?? 0n).toString()}
         />
         <StatCard
           icon="↔️"
@@ -83,40 +91,35 @@ export default function Home() {
           value={isLoading ? '—' : (stats?.transfers ?? 0n).toString()}
         />
         <StatCard
-          icon="📝"
+          icon="📋"
           label="Claims Submitted"
           value={isLoading ? '—' : (stats?.claims ?? 0n).toString()}
-        />
-        <StatCard
-          icon="✅"
-          label="Claims Approved"
-          value={isLoading ? '—' : (stats?.approvedClaims ?? 0n).toString()}
         />
       </section>
 
       {/* How it works */}
       <section className={styles.howSection}>
-        <h2 className={styles.sectionTitle}>How Warranty Recovery & Verification Works</h2>
+        <h2 className={styles.sectionTitle}>How Warranty Registration & Recovery Works</h2>
         <div className={styles.steps}>
           <Step 
             n="1" 
-            title="Warranty Issued" 
-            body="Authorized issuers register product warranties on-chain, assigning digital ownership directly to your wallet address." 
+            title="Register Product Warranty" 
+            body="Product owners submit their product serial number, description, and proof of purchase to create an on-chain registration request." 
           />
           <Step 
             n="2" 
-            title="Physical Paperwork Lost?" 
-            body="No problem. If your receipt or paper card is misplaced, reconnect your wallet to instantly recover your warranty." 
+            title="Issuer Verification" 
+            body="Authorized brand or retail issuers review the submission proof on-chain and approve the registration into an Active Warranty." 
           />
           <Step 
             n="3" 
-            title="Transfer & Resell" 
-            body="When you resell a product, transfer the digital warranty on-chain. The new owner can now recover and claim it." 
+            title="Recover Anytime" 
+            body="If your physical receipt or paper card is misplaced, reconnect your wallet to instantly recover your verified digital warranty." 
           />
           <Step 
             n="4" 
-            title="Submit Defect Claims" 
-            body="Submit defect claims against your recovered warranty. The issuer reviews and approves or rejects the claim transparently on-chain." 
+            title="Transfer & Defect Claims" 
+            body="Transfer ownership when reselling products, or submit warranty defect claims directly to the issuer on-chain." 
           />
         </div>
       </section>

@@ -1,14 +1,19 @@
 .root { display: flex; flex-direction: column; gap: var(--space-6); }
-.header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); }
+.header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.tabs { display: flex; gap: var(--space-2); border-bottom: 1px solid var(--colour-border); padding-bottom: var(--space-2); }
+.tabBtn { background: transparent; border: none; color: var(--colour-text-muted); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.tabBtn:hover { color: var(--colour-text); background: var(--colour-surface2); }
+.tabActive { color: var(--colour-accent) !important; background: var(--colour-accent-glow) !important; border: 1px solid rgba(14,165,233,0.3); }
+.tabContent { display: flex; flex-direction: column; gap: var(--space-4); }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-5); }
 .skeleton { display: flex; align-items: center; justify-content: center; min-height: 200px; }
 .item { display: flex; flex-direction: column; gap: var(--space-3); }
-.itemHeader { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.itemHeader { display: flex; align-items: center; justify-content: space-between; }
 .itemMeta { display: flex; align-items: center; gap: var(--space-2); }
-.recoveredBadge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--colour-accent); background: var(--colour-accent-glow); padding: 0.15rem 0.45rem; border-radius: 4px; }
+.recoveredBadge { font-size: 0.65rem; background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .itemId { font-family: var(--font-mono); font-size: 0.75rem; color: var(--colour-text-muted); background: var(--colour-surface2); padding: 0.1rem 0.4rem; border-radius: 4px; }
 .productName { font-size: 1.05rem; font-weight: 700; color: var(--colour-text); }
-.productId { font-size: 0.8rem; color: var(--colour-text-muted); }
+.productId { font-size: 0.8rem; color: var(--colour-text-muted); font-family: var(--font-mono); }
+.proofText { font-size: 0.8rem; color: var(--colour-text-muted); word-break: break-all; }
 .details { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--colour-text-muted); }
 .actions { display: flex; gap: var(--space-2); flex-wrap: wrap; padding-top: var(--space-2); border-top: 1px solid var(--colour-border); }
-.actions a { text-decoration: none; }

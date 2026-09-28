@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { Outlet, NavLink, useLocation } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 import { useAccount } from 'wagmi'
+import { useIsIssuer } from '@/hooks/useWarranty'
+import { CONTRACT_ADDRESS, explorerAddr } from '@/config/chains'
 import styles from './Layout.module.css'
 import NetworkGuard from './NetworkGuard'
 import WalletConnect from './WalletConnect'
 
 export default function Layout() {
-  const { isConnected } = useAccount()
-  const location = useLocation()
+  const { address, isConnected } = useAccount()
+  const { data: isIssuer } = useIsIssuer(address)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   const toggleMobileNav = () => setMobileNavOpen(prev => !prev)
@@ -56,6 +58,16 @@ export default function Layout() {
 
             {isConnected && (
               <NavLink 
+                to="/register" 
+                className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navActive : ''}`}
+                onClick={closeMobileNav}
+              >
+                📝 Register Warranty
+              </NavLink>
+            )}
+
+            {isConnected && (
+              <NavLink 
                 to="/my-warranties" 
                 className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navActive : ''}`}
                 onClick={closeMobileNav}
@@ -72,13 +84,13 @@ export default function Layout() {
               🔍 Verify
             </NavLink>
 
-            {isConnected && (
+            {isConnected && isIssuer && (
               <NavLink 
-                to="/create" 
+                to="/issuer" 
                 className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navActive : ''}`}
                 onClick={closeMobileNav}
               >
-                ➕ Issue Warranty
+                ⚙️ Issuer Dashboard
               </NavLink>
             )}
 
@@ -116,7 +128,7 @@ export default function Layout() {
             <a href="https://scan.bohr.life" target="_blank" rel="noopener noreferrer">Bohr Testnet (Chain 968)</a>
           </p>
           <p className={styles.contractRef}>
-            Contract CA: <a href="https://scan.bohr.life/address/0x3EEd2A5a337A8c954276049d2FBD490655B55f31" target="_blank" rel="noopener noreferrer" className="mono">0x3EEd2A5a337A8c954276049d2FBD490655B55f31</a>
+            Contract CA: <a href={explorerAddr(CONTRACT_ADDRESS)} target="_blank" rel="noopener noreferrer" className="mono">{CONTRACT_ADDRESS}</a>
           </p>
         </div>
       </footer>

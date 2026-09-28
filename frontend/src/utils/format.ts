@@ -11,6 +11,7 @@ export function shortAddr(addr: string, chars = 6): string {
 
 // ── Timestamp formatting ──────────────────────────────────────────────────────
 export function formatDate(ts: bigint | number): string {
+  if (!ts || ts === 0n) return 'N/A'
   const ms = typeof ts === 'bigint' ? Number(ts) * 1000 : ts * 1000
   return new Date(ms).toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -20,6 +21,7 @@ export function formatDate(ts: bigint | number): string {
 }
 
 export function formatDateTime(ts: bigint | number): string {
+  if (!ts || ts === 0n) return 'N/A'
   const ms = typeof ts === 'bigint' ? Number(ts) * 1000 : ts * 1000
   return new Date(ms).toLocaleString('en-GB', {
     day: '2-digit',
@@ -31,6 +33,7 @@ export function formatDateTime(ts: bigint | number): string {
 }
 
 export function timeUntil(ts: bigint | number): string {
+  if (!ts || ts === 0n) return 'Pending Verification'
   const nowS  = Math.floor(Date.now() / 1000)
   const expS  = typeof ts === 'bigint' ? Number(ts) : ts
   const diff  = expS - nowS
@@ -45,7 +48,9 @@ export function timeUntil(ts: bigint | number): string {
 // ── Warranty status helpers ───────────────────────────────────────────────────
 export function warrantyStatusLabel(status: number): string {
   switch (status) {
+    case WarrantyStatus.Pending:       return 'Pending Verification'
     case WarrantyStatus.Active:        return 'Active'
+    case WarrantyStatus.Rejected:      return 'Registration Rejected'
     case WarrantyStatus.ClaimPending:  return 'Claim Pending'
     case WarrantyStatus.ClaimApproved: return 'Claim Approved'
     case WarrantyStatus.ClaimRejected: return 'Claim Rejected'
@@ -57,7 +62,9 @@ export function warrantyStatusLabel(status: number): string {
 
 export function warrantyStatusClass(status: number): string {
   switch (status) {
+    case WarrantyStatus.Pending:       return 'badge--pending'
     case WarrantyStatus.Active:        return 'badge--active'
+    case WarrantyStatus.Rejected:      return 'badge--rejected'
     case WarrantyStatus.ClaimPending:  return 'badge--pending'
     case WarrantyStatus.ClaimApproved: return 'badge--approved'
     case WarrantyStatus.ClaimRejected: return 'badge--rejected'
@@ -93,8 +100,9 @@ export function isEffectivelyActive(status: number, expiresAt: bigint): boolean 
 }
 
 export function isEffectivelyExpired(status: number, expiresAt: bigint): boolean {
+  if (status === WarrantyStatus.Pending || status === WarrantyStatus.Rejected) return false
   const nowS = BigInt(Math.floor(Date.now() / 1000))
-  return status === WarrantyStatus.Expired || expiresAt <= nowS
+  return status === WarrantyStatus.Expired || (expiresAt > 0n && expiresAt <= nowS)
 }
 
 // ── Error parsing ─────────────────────────────────────────────────────────────
@@ -110,14 +118,14 @@ export function parseContractError(err: unknown): string {
     return 'You are not the warranty owner'
   if (msg.includes('warranty expired'))
     return 'This warranty has expired'
+  if (msg.includes('warranty not pending'))
+    return 'This warranty registration is not in pending status'
   if (msg.includes('claim pending'))
     return 'A claim is already pending review'
   if (msg.includes('no pending claim'))
     return 'No pending claim found'
   if (msg.includes('already reviewed'))
     return 'This claim has already been reviewed'
-  if (msg.includes('not warranty issuer'))
-    return 'Only the warranty issuer can review claims'
   if (msg.includes('warranty not active'))
     return 'Warranty is not in an active state'
   if (msg.includes('warranty does not exist'))
@@ -131,7 +139,6 @@ export function parseContractError(err: unknown): string {
   if (msg.includes('network') || msg.includes('fetch'))
     return 'Network error — check your RPC connection'
 
-  // Slice common noisy prefix
   if (msg.length > 120) return msg.slice(0, 120) + '…'
   return msg
 }
@@ -145,4 +152,3 @@ export const DURATION_OPTIONS = [
   { label: '3 years',   seconds: 1095 * 24 * 3600 },
   { label: '5 years',   seconds: 1825 * 24 * 3600 },
 ]
-

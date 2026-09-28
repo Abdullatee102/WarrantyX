@@ -4,12 +4,14 @@
 
 /** Mirrors WarrantyX.WarrantyStatus enum in the contract */
 export enum WarrantyStatus {
-  Active = 0,
-  ClaimPending = 1,
-  ClaimApproved = 2,
-  ClaimRejected = 3,
-  Expired = 4,
-  Cancelled = 5,
+  Pending = 0,        // Submitted by user, awaiting issuer verification
+  Active = 1,         // Verified & approved by issuer; active warranty
+  Rejected = 2,       // Registration rejected by issuer
+  ClaimPending = 3,   // Defect claim submitted, awaiting review
+  ClaimApproved = 4,  // Defect claim approved
+  ClaimRejected = 5,  // Defect claim rejected
+  Expired = 6,        // Warranty duration expired
+  Cancelled = 7,      // Cancelled by issuer
 }
 
 /** Mirrors WarrantyX.ClaimStatus enum in the contract */
@@ -26,11 +28,15 @@ export interface Warranty {
   productName: string
   productMetaHash: `0x${string}`
   productMetaRef: string
+  proofRef: string
   issuer: `0x${string}`
   owner: `0x${string}`
+  submittedAt: bigint
   issuedAt: bigint
   expiresAt: bigint
+  durationSeconds: bigint
   status: number
+  rejectionReason: string
   transferCount: bigint
   claimCount: bigint
   approvedClaimCount: bigint
@@ -61,8 +67,10 @@ export interface TransferRecord {
 /** Platform statistics */
 export interface PlatformStats {
   warranties: bigint
+  registrations: bigint
+  approved: bigint
+  rejected: bigint
   transfers: bigint
   claims: bigint
   approvedClaims: bigint
 }
-
