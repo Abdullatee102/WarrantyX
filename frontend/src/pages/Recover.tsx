@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAccount } from 'wagmi'
-import { useAppKit } from '@reown/appkit/react'
+import { appkitModal } from '@/config/appkit'
 import { Link } from 'react-router-dom'
 import { useWarrantiesByOwner, useWarranty } from '@/hooks/useWarranty'
 import { WarrantyStatus } from '@/types/warranty'
@@ -9,11 +9,10 @@ import styles from './Recover.module.css'
 
 export default function Recover() {
   const { address, isConnected } = useAccount()
-  const { open } = useAppKit()
   const [isScanning, setIsScanning] = useState(false)
 
   const handleConnectClick = () => {
-    open()
+    appkitModal.open()
   }
 
   const handleScanClick = () => {
@@ -203,7 +202,7 @@ function RecoveredWarrantyItem({ warrantyId }: { warrantyId: bigint }) {
           🔍 View Full Warranty Details
         </Link>
         {isActive && (
-          <Link to={`/warranty/${warranty.warrantyId.toString()}`} className="btn btn--secondary btn--sm">
+          <Link to={`/warranty/${warrantyId.toString()}`} className="btn btn--secondary btn--sm">
             📋 Submit Claim
           </Link>
         )}

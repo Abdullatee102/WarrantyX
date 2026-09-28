@@ -1,15 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAccount } from 'wagmi'
-import { useAppKit } from '@reown/appkit/react'
+import { appkitModal } from '@/config/appkit'
 import { usePlatformStats } from '@/hooks/useWarranty'
 import { CONTRACT_ADDRESS, explorerAddr } from '@/config/chains'
 import styles from './Home.module.css'
 
 export default function Home() {
   const { isConnected } = useAccount()
-  const { open } = useAppKit()
   const { data: stats, isLoading } = usePlatformStats()
+
+  const handleOpenConnect = () => {
+    appkitModal.open()
+  }
 
   return (
     <div className={styles.root}>
@@ -32,7 +35,7 @@ export default function Home() {
               🛡️ Recover My Warranty
             </Link>
           ) : (
-            <button className="btn btn--primary btn--lg" onClick={() => open()}>
+            <button className="btn btn--primary btn--lg" onClick={handleOpenConnect}>
               🛡️ Recover My Warranty
             </button>
           )}

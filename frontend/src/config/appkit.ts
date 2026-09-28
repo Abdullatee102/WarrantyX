@@ -1,13 +1,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Reown AppKit Initialisation — WarrantyX
 // ─────────────────────────────────────────────────────────────────────────────
-// createAppKit MUST be called once, at module level, before any React code.
+// createAppKit MUST be imported from '@reown/appkit/react' for React integration.
 // ─────────────────────────────────────────────────────────────────────────────
-import { createAppKit } from '@reown/appkit'
+import { createAppKit } from '@reown/appkit/react'
 import { SUPPORTED_CHAINS } from './chains'
 import { REOWN_PROJECT_ID, wagmiAdapter } from './wagmi'
 
-createAppKit({
+export const appkitModal = createAppKit({
   adapters: [wagmiAdapter],
   networks: SUPPORTED_CHAINS,
   defaultNetwork: SUPPORTED_CHAINS[0],
@@ -31,4 +31,3 @@ createAppKit({
 })
 
 export { REOWN_PROJECT_ID }
-
