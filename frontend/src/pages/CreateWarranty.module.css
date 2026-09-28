@@ -6,4 +6,33 @@
 .infoCard ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
 .infoCard li { font-size: 0.875rem; color: var(--colour-text-muted); line-height: 1.5; padding-left: var(--space-4); position: relative; }
 .infoCard li::before { content: '\2713'; position: absolute; left: 0; color: var(--colour-accent); }
+
+.successBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-2);
+}
+
+.successIcon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.successBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.successCtas {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+.successCtas a { text-decoration: none; }
+
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
