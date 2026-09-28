@@ -1,0 +1,121 @@
+.root { max-width: 800px; }
+
+.searchBox {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.searchInput { flex: 1; }
+
+.searchBtn { flex-shrink: 0; min-width: 100px; }
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--colour-text-muted);
+  padding: var(--space-8) 0;
+}
+
+.result {
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.notFoundIcon { font-size: 2rem; }
+
+.resultHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.resultHeaderLeft { display: flex; align-items: flex-start; gap: var(--space-4); }
+
+.checkmark {
+  width: 48px;
+  height: 48px;
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.resultTitle { font-size: 1.2rem; font-weight: 700; color: var(--colour-text); }
+.resultSub { font-size: 0.875rem; color: var(--colour-text-muted); margin-top: 2px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-1);
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--colour-surface2);
+  gap: var(--space-4);
+}
+
+.infoLabel { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--colour-text-muted); flex-shrink: 0; }
+.infoValue { font-size: 0.875rem; color: var(--colour-text-dim); text-align: right; word-break: break-all; }
+
+.section { display: flex; flex-direction: column; gap: var(--space-4); }
+.sectionHead { font-size: 0.9rem; font-weight: 700; color: var(--colour-text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 12px; bottom: 12px; width: 2px; background: var(--colour-border); }
+
+.timelineEntry {
+  display: flex;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  position: relative;
+}
+
+.timelineDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--colour-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  border: 3px solid var(--colour-bg);
+  z-index: 1;
+}
+
+.timelineContent { display: flex; flex-direction: column; gap: 2px; }
+.timelineLabel { font-size: 0.8rem; font-weight: 600; color: var(--colour-text-dim); }
+.timelineAddr { font-size: 0.8rem; word-break: break-all; }
+.timelineTime { font-size: 0.75rem; color: var(--colour-text-muted); }
+
+/* Claims */
+.claimRow {
+  background: var(--colour-surface2);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.claimMeta { display: flex; align-items: center; justify-content: space-between; }
+.claimDesc { font-size: 0.875rem; color: var(--colour-text-dim); }
+.claimRef { font-size: 0.8rem; color: var(--colour-accent); }

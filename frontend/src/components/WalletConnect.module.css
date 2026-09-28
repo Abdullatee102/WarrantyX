@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.balance {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--colour-text-dim);
+  background: var(--colour-surface2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--colour-border);
+}
+
+.symbol {
+  color: var(--colour-accent);
+  font-weight: 600;
+}

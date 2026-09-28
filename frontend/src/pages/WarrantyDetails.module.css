@@ -1,0 +1,65 @@
+.root { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.pageHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+
+.breadcrumb { font-size: 0.8rem; color: var(--colour-text-muted); margin-bottom: var(--space-2); }
+.breadcrumb a { color: var(--colour-accent); }
+
+.title { font-size: 1.8rem; font-weight: 800; color: var(--colour-text); margin-bottom: var(--space-2); }
+
+.titleMeta { display: flex; align-items: center; gap: var(--space-3); }
+
+.headerActions { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: flex-start; padding-top: var(--space-2); }
+
+.actionCard { display: flex; flex-direction: column; gap: var(--space-4); border-color: var(--colour-accent); }
+.actionCard h3 { font-size: 1rem; font-weight: 700; }
+
+.actionForm { display: flex; flex-direction: column; gap: var(--space-3); }
+.formActions { display: flex; gap: var(--space-3); justify-content: flex-end; }
+
+.reviewCard { border-color: var(--colour-warning); display: flex; flex-direction: column; gap: var(--space-3); }
+.reviewCard h3 { font-size: 1rem; font-weight: 700; }
+.claimDesc { font-size: 0.875rem; color: var(--colour-text-dim); line-height: 1.5; }
+.reviewActions { display: flex; gap: var(--space-3); }
+
+.mainGrid { display: grid; grid-template-columns: 360px 1fr; gap: var(--space-6); }
+@media (max-width: 900px) { .mainGrid { grid-template-columns: 1fr; } }
+
+.leftCol, .rightCol { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.infoCard { display: flex; flex-direction: column; gap: var(--space-4); }
+.cardTitle { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--colour-text-muted); margin-bottom: var(--space-2); }
+
+.dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+}
+.dl dt { color: var(--colour-text-muted); font-size: 0.8rem; align-self: center; }
+.dl dd { color: var(--colour-text-dim); font-weight: 500; word-break: break-all; }
+
+.youBadge { background: var(--colour-accent-glow); color: var(--colour-accent); font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 600; margin-left: 4px; }
+
+/* Timeline */
+.timelineCard { }
+
+.timeline { display: flex; flex-direction: column; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: var(--colour-border); }
+
+.timelineItem { display: flex; gap: var(--space-4); padding-bottom: var(--space-4); position: relative; }
+.tDot { width: 24px; height: 24px; border-radius: 50%; background: var(--colour-surface2); border: 2px solid var(--colour-border); flex-shrink: 0; z-index: 1; }
+.tDotCurrent { background: var(--colour-accent); border-color: var(--colour-accent); }
+.tContent { display: flex; flex-direction: column; gap: 2px; }
+.tLabel { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--colour-text-muted); }
+.tTime { font-size: 0.75rem; color: var(--colour-text-muted); }
+.tCurrent .tContent .tLabel { color: var(--colour-accent); }
+
+/* Claims */
+.claimsCard { display: flex; flex-direction: column; gap: var(--space-4); }
+.claimRow { background: var(--colour-surface2); border-radius: var(--radius-md); border: 1px solid var(--colour-border); padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+.claimHeader { display: flex; align-items: center; justify-content: space-between; }
+.claimNum { font-size: 0.8rem; font-weight: 600; color: var(--colour-text-dim); }
+.claimText { font-size: 0.875rem; color: var(--colour-text-dim); line-height: 1.5; }
+.claimDoc { font-size: 0.8rem; color: var(--colour-accent); }
+.claimMeta { display: flex; gap: var(--space-4); flex-wrap: wrap; font-size: 0.75rem; color: var(--colour-text-muted); }

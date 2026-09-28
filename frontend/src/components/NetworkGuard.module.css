@@ -1,0 +1,42 @@
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--space-12) var(--space-6);
+}
+
+.card {
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.icon { font-size: 3rem; margin-bottom: var(--space-4); }
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--colour-text);
+}
+
+.desc {
+  color: var(--colour-text-muted);
+  margin-bottom: var(--space-6);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+.desc strong { color: var(--colour-accent); }
+.desc code { font-family: var(--font-mono); font-size: 0.85rem; background: var(--colour-surface2); padding: 0.1rem 0.4rem; border-radius: 4px; }
+
+.btn { width: 100%; margin-bottom: var(--space-4); }
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--colour-text-muted);
+  line-height: 1.6;
+}

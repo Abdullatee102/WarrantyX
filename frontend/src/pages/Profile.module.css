@@ -1,0 +1,19 @@
+.root { display: flex; flex-direction: column; gap: var(--space-8); max-width: 800px; }
+.hero { display: flex; align-items: center; gap: var(--space-5); }
+.avatar { font-size: 3rem; width: 80px; height: 80px; background: var(--colour-surface2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--colour-border); }
+.heroInfo { display: flex; flex-direction: column; gap: var(--space-2); }
+.title { font-size: 1.5rem; font-weight: 800; }
+.addr { font-size: 0.8rem; word-break: break-all; }
+.statsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-4); }
+.statCard { text-align: center; padding: var(--space-6); }
+.statVal { font-size: 2rem; font-weight: 800; color: var(--colour-accent); margin-bottom: var(--space-1); }
+.statLabel { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--colour-text-muted); }
+.section { display: flex; flex-direction: column; gap: var(--space-4); }
+.sectionTitle { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--colour-text-muted); }
+.warrantyList { display: flex; flex-direction: column; gap: var(--space-3); }
+.warRow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); text-decoration: none; }
+.warRow:hover { text-decoration: none; }
+.warInfo { display: flex; align-items: center; gap: var(--space-3); }
+.warId { font-family: var(--font-mono); font-size: 0.75rem; color: var(--colour-text-muted); background: var(--colour-surface2); padding: 0.1rem 0.4rem; border-radius: 4px; }
+.warName { font-size: 0.9rem; font-weight: 600; color: var(--colour-text); }
+.warRight { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }

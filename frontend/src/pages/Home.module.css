@@ -1,0 +1,194 @@
+.root { display: flex; flex-direction: column; gap: var(--space-12); }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  background: linear-gradient(180deg, rgba(14, 165, 233, 0.05) 0%, rgba(8, 12, 20, 0) 100%);
+  border-radius: var(--radius-xl);
+}
+
+.heroBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--colour-accent);
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--colour-text);
+}
+
+.heroAccent { color: var(--colour-accent); }
+
+.heroSub {
+  max-width: 620px;
+  font-size: 1.1rem;
+  color: var(--colour-text-muted);
+  line-height: 1.7;
+}
+
+.heroCtas { display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center; margin-top: var(--space-2); }
+.heroCtas a { text-decoration: none; }
+
+.btn--lg {
+  padding: 0.85rem 1.8rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Problem & Solution Grid */
+.problemSolution {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.psCard {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.psCardHighlight {
+  border-color: var(--colour-accent);
+  background: linear-gradient(135deg, var(--colour-surface) 0%, var(--colour-surface2) 100%);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+}
+
+.psIcon {
+  font-size: 2rem;
+}
+
+.psCard h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--colour-text);
+}
+
+.psCard p {
+  font-size: 0.9rem;
+  color: var(--colour-text-muted);
+  line-height: 1.6;
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.statCard {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+.statIcon { font-size: 1.8rem; margin-bottom: var(--space-3); }
+
+.statValue {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--colour-accent);
+  margin-bottom: var(--space-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel { font-size: 0.8rem; color: var(--colour-text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* How it works */
+.howSection {}
+
+.sectionTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-6);
+}
+
+.step {
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stepNum {
+  width: 36px;
+  height: 36px;
+  background: var(--colour-accent-glow);
+  color: var(--colour-accent);
+  border: 1px solid rgba(14,165,233,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.stepTitle { font-weight: 700; font-size: 1rem; color: var(--colour-text); }
+
+.stepBody { font-size: 0.875rem; color: var(--colour-text-muted); line-height: 1.6; }
+
+/* Network */
+.networkSection {}
+
+.networkCard {
+  background: linear-gradient(135deg, var(--colour-surface) 0%, var(--colour-surface2) 100%);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+}
+
+.networkCard h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  color: var(--colour-text);
+}
+
+.networkGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.networkGrid > div { display: flex; flex-direction: column; gap: var(--space-1); }
+
+.netLabel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--colour-text-muted); }
+
+.networkGrid > div > span, .networkGrid > div > a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--colour-text-dim);
+}
+
+@media (max-width: 640px) {
+  .hero { padding: var(--space-8) var(--space-4); }
+  .heroCtas { flex-direction: column; align-items: stretch; width: 100%; }
+  .heroCtas button, .heroCtas a { width: 100%; }
+}
